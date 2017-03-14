@@ -1,0 +1,12 @@
+Server network accessible at http://127.0.0.1:8181
+** Dark Sky Parser! **
+Data retreived:  2017-03-14 16:55:47
+error:  null
+statusCode:  200
+body:  {"latitude":40.6069,"longitude":-75.378,"timezone":"America/New_York","offset":-4,"currently":{"time":1489510547,"summary":"Foggy","icon":"fog","nearestStormDistance":4,"nearestStormBearing":287,"precipIntensity":0,"precipProbability":0,"temperature":28.8,"apparentTemperature":18.12,"dewPoint":26.36,"humidity":0.9,"windSpeed":13.44,"windBearing":357,"visibility":0.68,"cloudCover":1,"pressure":1000.43,"ozone":418.59}}
+Got a request: /
+
+Got a request for the css
+Got a request: /
+
+Got a request for the css

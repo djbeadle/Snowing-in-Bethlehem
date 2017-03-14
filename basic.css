@@ -1,0 +1,23 @@
+h1 { 
+	text-align: center;
+	color: #fff;
+	font-size: 8em;
+}
+h2 {
+	text-align: center;
+	color: #fff;
+	font-size: 3em;
+}
+h3{
+	text-align:center;
+	color: #fff;
+	font-size: 1em;
+}
+body{
+	background-color: green;
+	margin: 0 auto;
+	width: 80%;
+}
+body.yes{
+	background-color:red;
+}
