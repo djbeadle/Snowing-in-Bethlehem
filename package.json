@@ -27,6 +27,6 @@
   "homepage": "https://github.com/djbeadle/Snowing-in-Bethlehem#readme",
   "dependencies": {
     "request": "2.x.x",
-    "dateTime": "1.x.x"
+    "node-datetime": "1.x.x"
   }
 }
