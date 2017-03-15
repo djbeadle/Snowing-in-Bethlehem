@@ -1,0 +1,32 @@
+{
+  "name": "snowing-in-bethlehem",
+  "version": "1.0.0",
+  "description": "Is it snowing in Bethlehem, Pa?",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djbeadle/Snowing-in-Bethlehem.git"
+  },
+  "keywords": [
+    "darksky.net",
+    "weather",
+    "snowing",
+    "bethlehem"
+  ],
+  "author": {
+    "name": "Daniel Beadle",
+    "url:": "https://www.twitter.com/djbeadle"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djbeadle/Snowing-in-Bethlehem/issues"
+  },
+  "homepage": "https://github.com/djbeadle/Snowing-in-Bethlehem#readme",
+  "dependencies": {
+    "request": "2.x.x",
+    "dateTime": "1.x.x"
+  }
+}
