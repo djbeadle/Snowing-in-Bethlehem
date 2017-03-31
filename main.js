@@ -78,11 +78,12 @@ http.createServer(function(request, response){
 		// response.write(JSON.stringify(current_weather.currently["icon"], 1), "utf8");
 
 		console.log("***midnight debugging: ***");
-		console.log(current_weather.currently['precipProbability'] < config.threshold);		
-		console.log(config.weather.indexOf(current_weather.currently['precipType']) == -1);
+		//console.log(current_weather.currently['precipProbability'] < config.threshold);		
+		//console.log(config.weather.indexOf(current_weather.currently['precipType']) == -1);
 		console.log("*** end midnight debugging: ***");
 		if(typeof current_weather == "undefined"){
-			response.write("<h2>A: No data from <a href='https://darksky.net/forecast/" + config.lat + "," + config.lon + "/us12/en' target='_blank'>DarkSky.net</a> try again later.</h2>");
+			response.write("<h2>A: No data from <a href='https://darksky.net/forecast/" + config.lat + "," + config.lon + "/us12/en' target='_blank'>DarkSky.net</a> try again later.</h2><h3>Until then, here's a random cat picture :)</h3>");
+			response.write("<a href='http://thecatapi.com'><img src='http://thecatapi.com/api/images/get?format=src&type=gif'></a>");
 			response.end("");
 		}
 		else if(current_weather.currently["precipProbability"] < config.threshold || config.weather.indexOf(current_weather.currently["precipType"]) == -1){
@@ -91,7 +92,7 @@ http.createServer(function(request, response){
 			response.write("<h3>...Or at least, probably not. This prediction is powered by <a href='https://darksky.net/forecast/" + config.lat + "," + config.lon + "/us12/en' target='_blank'>DarkSky.net</a> and uses their precipitation estimates to determine if it's snowing or not.</h3>");
 			response.end("</body>");
 		}
-		else {
+		else if(current_weather.currently["precipProbability"] >= config.threshold && config.weather.indexOf(current_weather.currently["precipType"]) > -1){
 			// display the percipitation probability for debugging purposes. 
 			/* response.write("Probability of "); 
 			   response.write(JSON.stringify(current_weather.currently["precipType"]));
@@ -105,15 +106,19 @@ http.createServer(function(request, response){
 			//console.log(current_weather.currently["precipProbability"] >= config.threshold && (current_weather.currently["precipType"] == "snow" || current_weather.currently["precipType"] == "sleet"));
 			console.log(current_weather.currently["precipProbability"] >= config.threshold && config.weather.indexOf(current_weather.currently["precipType"]) > -1);
 
-			if(current_weather.currently["precipProbability"] >= config.threshold && config.weather.indexOf(current_weather.currently["precipType"]) > -1){
-				console.log("Holy shit it's snowing!\n");
-				response.write("<body class='yes'>");
-				response.write("<div><h1>YES- COMMENCE PANIC!</h1></div></body>");
-				response.write("<h3>This website is powered by DarkSky.net and uses their precipitation estimates to determine if it's snowing or not.</h3>");
-				response.write("</body>");
-			}
+			console.log("Holy shit it's snowing!\n");
+			response.write("<body class='yes'>");
+			response.write("<div><h1>YES- COMMENCE PANIC!</h1></div></body>");
+			response.write("<h3>This website is powered by DarkSky.net and uses their precipitation estimates to determine if it's snowing or not.</h3>");
+			response.write("</body>");
 			response.end("");
 		}
+		else{
+                        response.write("<h1>An unknown error occured :(</h1><h2>so here's a random cat picture :)</h2>");
+			response.write("<a href='http://thecatapi.com'><img src='http://thecatapi.com/api/images/get?format=src&type=gif'></a>");
+                        response.end("");
+		}
+
 		break;
 		}
 
