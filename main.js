@@ -75,18 +75,16 @@ http.createServer(function(request, response){
 		response.writeHead(200, {'Content-Type': 'text/html'});
 		response.write("<head><link rel='stylesheet' href='basic.css'><title>Is it snowing in " + config.placename + "?</title></head>\n");
 		response.write("<h2>IS IT SNOWING IN " + config.placename.toUpperCase() + "?</h2>\n");
-		// response.write(JSON.stringify(current_weather.currently["icon"], 1), "utf8");
 
-		console.log("***midnight debugging: ***");
-		//console.log(current_weather.currently['precipProbability'] < config.threshold);		
-		//console.log(config.weather.indexOf(current_weather.currently['precipType']) == -1);
-		console.log("*** end midnight debugging: ***");
 		if(typeof current_weather == "undefined"){
 			response.write("<h2>A: No data from <a href='https://darksky.net/forecast/" + config.lat + "," + config.lon + "/us12/en' target='_blank'>DarkSky.net</a> try again later.</h2><h3>Until then, here's a random cat picture :)</h3>");
 			response.write("<a href='http://thecatapi.com'><img src='http://thecatapi.com/api/images/get?format=src&type=gif'></a>");
 			response.end("");
 		}
-		else if(current_weather.currently["precipProbability"] < config.threshold || config.weather.indexOf(current_weather.currently["precipType"]) == -1){
+		// As per https://darksky.net/dev/docs#/dev/docs#response-format, 
+		// precipType and precipProbability are optional fields.
+		// If neither of them exist in the response then there's no precipitation going on at the moment.
+		else if(true || current_weather.currently["precipProbability"] < config.threshold || config.weather.indexOf(current_weather.currently["precipType"]) == -1){
 			response.write("<body class='no'>\n");
 			response.write("<div><h1>No.</h1></div>\n");
 			response.write("<h3>...Or at least, probably not. This prediction is powered by <a href='https://darksky.net/forecast/" + config.lat + "," + config.lon + "/us12/en' target='_blank'>DarkSky.net</a> and uses their precipitation estimates to determine if it's snowing or not.</h3>");
